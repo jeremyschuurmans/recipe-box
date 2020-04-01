@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/palledorous/recipe-box.svg?branch=master)](https://travis-ci.com/palledorous/recipe-box)
+
 # RecipeBox
 
 To start your Phoenix server:
