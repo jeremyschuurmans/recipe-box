@@ -1,0 +1,11 @@
+<h1>Add a new cuisine</h1>
+<p>Cuisines are how RecipeBox organizes your recipe library. We think of this in terms of "Italian Food" or "Midwestern Fare",
+but feel free to group your recipes any way you like. "Breakfast", "Lunch", and "Dinner", or "Football Munchies" -- whatever your
+heart (and taste buds) desire!</p>
+
+<%= form_for @changeset, Routes.cuisine_path(@conn, :create), fn f -> %>
+  <div>
+    <%= text_input f, :name, placeholder: "Name" %>
+  </div>
+  <%= submit "Create Cuisine" %>
+<% end %>
