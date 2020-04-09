@@ -1,11 +1,11 @@
 defmodule RecipeBox.TestHelpers do
-  alias RecipeBox.Cuisines
+  alias RecipeBox.Cuisine
 
   def cuisine_fixture(attrs \\ %{}) do
     {:ok, cuisine} = 
       attrs
       |> Enum.into(%{name: "Midwestern American"})
-      |> Cuisines.create_cuisine()
+      |> Cuisine.create_cuisine()
     cuisine
   end
 end

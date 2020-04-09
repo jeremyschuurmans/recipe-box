@@ -28,11 +28,7 @@ defmodule RecipeBox.Cuisine do
   def changeset(cuisine, attrs) do
     cuisine |> cast(attrs, [:name])
   end
-
-  def change_cuisine(%Cuisine{} = cuisine) do
-    Cuisine.changeset(cuisine, %{})
-  end
-
+  
   def create_cuisine(attrs \\ %{}) do
     %Cuisine{}
     |> Cuisine.changeset(attrs)
