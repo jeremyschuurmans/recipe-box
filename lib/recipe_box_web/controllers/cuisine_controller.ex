@@ -16,9 +16,10 @@ defmodule RecipeBoxWeb.CuisineController do
 
   def create(conn, %{"cuisine" => cuisine_params}) do
     {:ok, cuisine} = Cuisine.create_cuisine(cuisine_params)
+    IO.inspect(conn)
 
     conn
     |> put_flash(:info, "Success! #{cuisine.name} created!")
-    |> redirect(to: Routes.cuisine_path(conn, :show))
+    |> redirect(to: Routes.cuisine_path(conn, :index))
   end
 end
