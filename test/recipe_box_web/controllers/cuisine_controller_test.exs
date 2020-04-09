@@ -21,7 +21,10 @@ defmodule RecipeBoxWeb.CuisineControllerTest do
     [{:ok, cuisine1}, {:ok, cuisine2}, {:ok, cuisine3}] = Enum.map(cuisines, &Cuisine.create_cuisine(&1))
 
     conn = get(conn, "/cuisines")
-    assert html_response(conn , 200) =~ "Cuisines"
+    assert html_response(conn, 200) =~ "Cuisines"
+    assert html_response(conn, 200) =~ cuisine1.name
+    assert html_response(conn, 200) =~ cuisine2.name
+    assert html_response(conn, 200) =~ cuisine3.name
   end
 end
 

@@ -1,0 +1,9 @@
+<h1>Cuisines</h1>
+
+<table>
+  <%= for cuisine <- @cuisines do %>
+    <tr>
+     <td><b><%= cuisine.name %></b></td>
+    </tr>
+  <% end %>
+</table>

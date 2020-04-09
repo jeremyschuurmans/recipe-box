@@ -34,5 +34,9 @@ defmodule RecipeBox.Cuisine do
     |> Cuisine.changeset(attrs)
     |> Repo.insert()
   end
+
+  def list_cuisines() do
+    Repo.all(Cuisine)
+  end
 end
 

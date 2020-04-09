@@ -9,6 +9,11 @@ defmodule RecipeBoxWeb.CuisineController do
   and the conn is a struct that
   contains all the information (body, cookies, headers ...).
   """
+  def index(conn, _params) do
+    cuisines = Cuisine.list_cuisines()
+    render(conn, "index.html", cuisines: cuisines)
+  end
+
   def new(conn, params) do
     changeset = Cuisine.changeset(%Cuisine{}, params)
     render(conn, "new.html", changeset: changeset)
