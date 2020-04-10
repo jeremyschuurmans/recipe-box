@@ -12,5 +12,8 @@ defmodule RecipeBox.CuisineTest do
       assert {:ok, %Cuisine{id: id}=cuisine} = Cuisine.create_cuisine(@valid_attrs)
       assert cuisine.name == "Italian"
     end
+
+    test "does not insert duplicate cuisine" do
+    end
   end
 end
