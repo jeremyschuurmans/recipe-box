@@ -3,7 +3,7 @@
 <table>
   <%= for cuisine <- @cuisines do %>
     <tr>
-     <td><b><%= cuisine.name %></b></td>
+     <td><b><%= cuisine %></b></td>
     </tr>
   <% end %>
 </table>

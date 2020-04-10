@@ -3,14 +3,8 @@ defmodule RecipeBoxWeb.CuisineController do
 
   alias RecipeBox.Cuisine
   
-  @doc """
-  The conn is the Plug connection. 
-  The Plug takes a connection and returns a connection,
-  and the conn is a struct that
-  contains all the information (body, cookies, headers ...).
-  """
   def index(conn, _params) do
-    cuisines = Cuisine.list_cuisines()
+    cuisines = Cuisine.list_cuisines() |> Cuisine.alphabetize_cuisines()
     render(conn, "index.html", cuisines: cuisines)
   end
 
@@ -20,11 +14,14 @@ defmodule RecipeBoxWeb.CuisineController do
   end
 
   def create(conn, %{"cuisine" => cuisine_params}) do
-    {:ok, cuisine} = Cuisine.create_cuisine(cuisine_params)
-    IO.inspect(conn)
+    case Cuisine.create_cuisine(cuisine_params) do
+      {:ok, _params} ->
+        conn
+          |> put_flash(:info, "Success!")
+          |> redirect(to: Routes.cuisine_path(conn, :index))
 
-    conn
-    |> put_flash(:info, "Success! #{cuisine.name} created!")
-    |> redirect(to: Routes.cuisine_path(conn, :index))
+      {:error, %Ecto.Changeset{} = changeset} ->
+        render(conn, "new.html", changeset: changeset)
+    end
   end
 end
