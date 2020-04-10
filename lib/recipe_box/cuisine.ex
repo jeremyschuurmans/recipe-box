@@ -26,10 +26,15 @@ defmodule RecipeBox.Cuisine do
   The cast function allows only the specified fields into the DB and nothing else.
   """
   def changeset(cuisine, attrs) do
-    cuisine 
+    cuisine
     |> cast(attrs, [:name])
     |> validate_required([:name])
+    |> downcase_value
     |> unique_constraint(:name)
+  end
+
+  def downcase_value(changeset) do
+    update_change(changeset, :name, &String.downcase/1)
   end
   
   def create_cuisine(attrs \\ %{}) do
