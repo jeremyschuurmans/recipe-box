@@ -48,6 +48,29 @@ defmodule RecipeBox.CuisineTest do
 
 
      end
-   end
+  end
 
+  describe "alphabetize_cuisines/1" do
+    @valid_attrs1 %{
+      name: "Breakfast"
+    }
+
+    @valid_attrs2 %{
+      name: "Second Breakfast"
+    }
+
+    @valid_attrs3 %{
+      name: "Elevenses"
+    }
+
+    test "returns cuisines in alphabetical order" do
+      %Cuisine{} = cuisine_fixture(@valid_attrs1)
+      %Cuisine{} = cuisine_fixture(@valid_attrs2)
+      %Cuisine{} = cuisine_fixture(@valid_attrs3)
+
+      cuisines = Cuisine.list_cuisines()
+
+      assert ["breakfast", "elevenses", "second breakfast"] = Cuisine.alphabetize_cuisines(cuisines)
+    end
+  end
 end
