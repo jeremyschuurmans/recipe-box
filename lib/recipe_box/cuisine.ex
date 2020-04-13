@@ -29,11 +29,11 @@ defmodule RecipeBox.Cuisine do
     cuisine
     |> cast(attrs, [:name])
     |> validate_required([:name])
-    |> downcase_value
+    |> downcase_name
     |> unique_constraint(:name)
   end
 
-  def downcase_value(changeset) do
+  def downcase_name(changeset) do
     update_change(changeset, :name, &String.downcase/1)
   end
   

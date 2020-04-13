@@ -15,10 +15,14 @@ defmodule RecipeBoxWeb.CuisineController do
   end
 
   def create(conn, %{"cuisine" => cuisine_params}) do
-    {:ok, cuisine} = Cuisine.create_cuisine(cuisine_params)
+    case Cuisine.create_cuisine(cuisine_params) do
+      {:ok, _params} ->
+        conn
+          |> put_flash(:info, "Success!")
+          |> redirect(to: Routes.cuisine_path(conn, :index))
 
-    conn
-    |> put_flash(:info, "Success! #{cuisine.name} created!")
-    |> redirect(to: Routes.cuisine_path(conn, :show))
+      {:error, %Ecto.Changeset{} = changeset} ->
+        render(conn, "new.html", changeset: changeset)
+    end
   end
 end
