@@ -4,11 +4,12 @@ defmodule RecipeBoxWeb.CuisineControllerTest do
 
   test "GET /new", %{conn: conn} do
     conn = get(conn, "/cuisines/new")
-    assert html_response(conn, 200) =~ "Add a new cuisine"
+    assert html_response(conn, 200) =~ "Create Cuisine"
   end
 
   test "POST /cuisines creates a new cuisine" do
-    # need to figure out how to do this
+    conn 
+  
   end
 
   test "GET /index lists all cuisines", %{conn: conn} do
