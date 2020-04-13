@@ -8,8 +8,13 @@ defmodule RecipeBoxWeb.CuisineControllerTest do
   end
 
   test "POST /cuisines creates a new cuisine" do
-    conn 
-  
+    conn = post(build_conn(), "/cuisines", cuisine: [name: "Russian"])
+
+    assert "/cuisines" = redirected_to(conn, 302)
+
+    conn = get(conn, "/cuisines")
+
+    assert html_response(conn, 200) =~ "russian" 
   end
 
   test "GET /index lists all cuisines", %{conn: conn} do
