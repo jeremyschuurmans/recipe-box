@@ -4,7 +4,9 @@ defmodule RecipeBoxWeb.CuisineController do
   alias RecipeBox.Cuisine
   
   def index(conn, _params) do
-    cuisines = Cuisine.list_cuisines() |> Cuisine.alphabetize_cuisines()
+    cuisines = Cuisine
+    |> Cuisine.alphabetize 
+    |> Cuisine.list_cuisines()
     render(conn, "index.html", cuisines: cuisines)
   end
 
