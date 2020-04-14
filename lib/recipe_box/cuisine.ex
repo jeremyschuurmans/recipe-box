@@ -27,7 +27,7 @@ defmodule RecipeBox.Cuisine do
     cuisine
     |> cast(attrs, [:name])
     |> validate_required([:name])
-    |> downcase_value
+    |> downcase_name
     |> unique_constraint(:name)
   end
 
