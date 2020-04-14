@@ -1,5 +1,6 @@
 defmodule RecipeBoxWeb.CuisineControllerTest do
   use RecipeBoxWeb.ConnCase
+  
   alias RecipeBox.Cuisine
 
   test "GET /new", %{conn: conn} do

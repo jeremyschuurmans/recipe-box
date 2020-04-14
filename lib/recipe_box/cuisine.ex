@@ -31,7 +31,7 @@ defmodule RecipeBox.Cuisine do
     |> unique_constraint(:name)
   end
 
-  def downcase_value(changeset) do
+  def downcase_name(changeset) do
     update_change(changeset, :name, &String.downcase/1)
   end
   
