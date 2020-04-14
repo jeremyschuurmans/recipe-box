@@ -15,8 +15,9 @@ defmodule RecipeBoxWeb.Router do
 
   scope "/", RecipeBoxWeb do
     pipe_through :browser
-
+    
     get "/", PageController, :index
+    resources "/cuisines", CuisineController, only: [:new, :create]
   end
 
   # Other scopes may use custom stacks.

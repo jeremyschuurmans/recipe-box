@@ -24,6 +24,7 @@ defmodule RecipeBox.DataCase do
       import Ecto.Changeset
       import Ecto.Query
       import RecipeBox.DataCase
+      import RecipeBox.TestHelpers
     end
   end
 
