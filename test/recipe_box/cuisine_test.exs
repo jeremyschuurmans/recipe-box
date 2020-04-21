@@ -27,7 +27,7 @@ defmodule RecipeBox.CuisineTest do
      end
    end
 
-  describe "list_cuisines/0" do
+  describe "list_cuisines/1" do
      @valid_attrs1 %{
        name: "Breakfast"
      }
@@ -37,14 +37,16 @@ defmodule RecipeBox.CuisineTest do
      }
 
      test "returns all cuisines" do
+      cuisines = Cuisine
+
        %Cuisine{id: id1} = cuisine_fixture()
-       assert [%Cuisine{id: ^id1}] = Cuisine.list_cuisines() 
+       assert [%Cuisine{id: ^id1}] = Cuisine.list_cuisines(cuisines) 
 
        %Cuisine{id: id2} = cuisine_fixture(@valid_attrs1)
-       assert [%Cuisine{id: ^id1}, %Cuisine{id: ^id2}] = Cuisine.list_cuisines()
+       assert [%Cuisine{id: ^id1}, %Cuisine{id: ^id2}] = Cuisine.list_cuisines(cuisines)
 
        %Cuisine{id: id3} = cuisine_fixture(@valid_attrs2)
-       assert [%Cuisine{id: ^id1}, %Cuisine{id: ^id2}, %Cuisine{id: ^id3}] = Cuisine.list_cuisines()
+       assert [%Cuisine{id: ^id1}, %Cuisine{id: ^id2}, %Cuisine{id: ^id3}] = Cuisine.list_cuisines(cuisines)
 
 
      end

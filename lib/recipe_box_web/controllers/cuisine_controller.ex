@@ -6,7 +6,7 @@ defmodule RecipeBoxWeb.CuisineController do
   def index(conn, _params) do
     cuisines = Cuisine
     |> Cuisine.alphabetize 
-    |> RecipeBox.Repo.all
+    |> Cuisine.list_cuisines()
     render(conn, "index.html", cuisines: cuisines)
   end
 

@@ -41,8 +41,8 @@ defmodule RecipeBox.Cuisine do
     |> Repo.insert()
   end
 
-  def list_cuisines() do
-    Repo.all(Cuisine)
+  def list_cuisines(cuisines) do
+    Repo.all(cuisines)
   end
 
   def alphabetize(query) do
