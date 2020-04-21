@@ -5,10 +5,9 @@ defmodule RecipeBox.Cuisine do
 
   use Ecto.Schema
   import Ecto.Changeset
+  import Ecto.Query
   
   alias RecipeBox.Cuisine
-
-  @doc "RecipeBox.Repo is the application's Ecto repository"
   alias RecipeBox.Repo
   
   @doc """
@@ -29,7 +28,6 @@ defmodule RecipeBox.Cuisine do
     cuisine
     |> cast(attrs, [:name])
     |> validate_required([:name])
-    |> downcase_name
     |> unique_constraint(:name)
   end
 
@@ -41,6 +39,15 @@ defmodule RecipeBox.Cuisine do
     %Cuisine{}
     |> Cuisine.changeset(attrs)
     |> Repo.insert()
+  end
+
+  def list_cuisines(cuisines) do
+    Repo.all(cuisines)
+  end
+
+  def alphabetize(query) do
+    query
+    |> order_by([c], c.name)
   end
 end
 
