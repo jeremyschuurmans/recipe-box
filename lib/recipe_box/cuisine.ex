@@ -5,6 +5,7 @@ defmodule RecipeBox.Cuisine do
 
   use Ecto.Schema
   import Ecto.Changeset
+  import Ecto.Query
   
   alias RecipeBox.Cuisine
   alias RecipeBox.Repo
@@ -27,7 +28,6 @@ defmodule RecipeBox.Cuisine do
     cuisine
     |> cast(attrs, [:name])
     |> validate_required([:name])
-    |> downcase_name
     |> unique_constraint(:name)
   end
 
@@ -45,10 +45,9 @@ defmodule RecipeBox.Cuisine do
     Repo.all(Cuisine)
   end
 
-  def alphabetize_cuisines(cuisines) do
-    cuisines
-    |> Enum.map(fn cuisine -> cuisine.name end)
-    |> Enum.sort()
+  def alphabetize(query) do
+    query
+    |> order_by([c], c.name)
   end
 end
 

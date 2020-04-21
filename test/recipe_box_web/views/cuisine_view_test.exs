@@ -6,10 +6,10 @@ defmodule RecipeBoxWeb.CuisineViewTest do
 
   test "renders index.html, displaying all cuisines", %{conn: conn} do
     cuisines = [
-      "italian",
-      "greek",
-      "spanish",
-      "mexican"
+      %{name: "italian"},
+      %{name: "greek"},
+      %{name: "spanish"},
+      %{name: "mexican"}
     ]
 
     content = render_to_string(
@@ -20,7 +20,7 @@ defmodule RecipeBoxWeb.CuisineViewTest do
     )
     
     for cuisine <- cuisines do
-      assert String.contains?(content, cuisine)
+      assert String.contains?(content, cuisine.name)
     end
   end
 

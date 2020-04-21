@@ -15,7 +15,13 @@ defmodule RecipeBoxWeb.CuisineControllerTest do
 
     conn = get(conn, "/cuisines")
 
-    assert html_response(conn, 200) =~ "russian" 
+    assert html_response(conn, 200) =~ "Russian" 
+  end
+
+  test "POST /cuisines renders new cuisine form with error on invalid input" do
+    conn = post(build_conn(), "/cuisines", cuisine: [name: " "])
+
+    assert html_response(conn, 200) =~ "data-phx-error-for=\"cuisine_name\">can&#39;t be blank"
   end
 
   test "GET /index lists all cuisines", %{conn: conn} do
