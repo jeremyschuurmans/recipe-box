@@ -1,10 +1,24 @@
 language: elixir
-
-elixir: 
-  - '1.10'
-
+elixir:
+- '1.10'
 otp_release:
-  - '22.3'
-
+- '22.3'
 services:
-  - postgresql
+- postgresql
+deploy:
+  - provider: heroku
+    api_key:
+      secure: SXs15t53NJy18Wy7rI4wEBbi4alIEvjmoecPv3kY1+gs7dymCIEm4cRVsdbWVDGQA9fxVaWXoQefDTTyo9QJ1Z1cHHfWqTQqRPambGOhTDhbp18AGwHrWiFuGwkIb6ymZ/M+rTnAQHiKqYwIPhICls9kl0ky+GbYqrZSn+WD3CtR+tCTPy/o+gKJ4WUcYUS0lkrKgsRhc8HDwKUX4X2+bvc0lxu25/2gkzm5X5jKfwTt4wq1AaIcQ7ctSXEJ6wQPNT32b4BWCIAKXgCeoKz9/cu5NrkMjH1uKhR6kqcjkcN40XeOtjTj1v9wPl4nVyH2q9Ac19M21lakJhKT9EE8I2saPoUeDW+t0+HmVwfibbLqi83F/Jj2RiILssMXZ83BltDkHb51gdC5tUnnb1XWoeXcUmYephg4atLDvpC+IDEFKrSVOsFmbpZpkX2GDJKnsTAZhcBI4cNBYA7ErTWwRsx40Kk7EAf14VOlyasRgL44megxmKkSU94E82SPI2TUhF3nTQrQMu3dpjcPPSTzNo6bXiS9Iqa7EWpvi5pCl/Fhr8QxyajMNIztGtSU+CdUbW4J32UWM2UdWyiw2Etppia+XEaKhcs88RDr+xDkyevRQUKc8ilc6p0LbRXcK1BlFTCACOsxeXtH8n9JQeq3/QraFs03S92aJykpAVZeyek=
+    app: recipe-box-8l-staging
+    run:
+      - "mix ecto.migrate"
+    on:
+      branch: master
+  - provider: heroku
+    api_key:
+      secure: SXs15t53NJy18Wy7rI4wEBbi4alIEvjmoecPv3kY1+gs7dymCIEm4cRVsdbWVDGQA9fxVaWXoQefDTTyo9QJ1Z1cHHfWqTQqRPambGOhTDhbp18AGwHrWiFuGwkIb6ymZ/M+rTnAQHiKqYwIPhICls9kl0ky+GbYqrZSn+WD3CtR+tCTPy/o+gKJ4WUcYUS0lkrKgsRhc8HDwKUX4X2+bvc0lxu25/2gkzm5X5jKfwTt4wq1AaIcQ7ctSXEJ6wQPNT32b4BWCIAKXgCeoKz9/cu5NrkMjH1uKhR6kqcjkcN40XeOtjTj1v9wPl4nVyH2q9Ac19M21lakJhKT9EE8I2saPoUeDW+t0+HmVwfibbLqi83F/Jj2RiILssMXZ83BltDkHb51gdC5tUnnb1XWoeXcUmYephg4atLDvpC+IDEFKrSVOsFmbpZpkX2GDJKnsTAZhcBI4cNBYA7ErTWwRsx40Kk7EAf14VOlyasRgL44megxmKkSU94E82SPI2TUhF3nTQrQMu3dpjcPPSTzNo6bXiS9Iqa7EWpvi5pCl/Fhr8QxyajMNIztGtSU+CdUbW4J32UWM2UdWyiw2Etppia+XEaKhcs88RDr+xDkyevRQUKc8ilc6p0LbRXcK1BlFTCACOsxeXtH8n9JQeq3/QraFs03S92aJykpAVZeyek=
+    app: recipe-box-8l
+    run:
+      - "mix ecto.migrate"
+    on:
+      condition: tags

@@ -20,3 +20,19 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
   * Docs: https://hexdocs.pm/phoenix
   * Forum: https://elixirforum.com/c/phoenix-forum
   * Source: https://github.com/phoenixframework/phoenix
+
+## Deployment
+
+Create Heroku apps for staging and prod.
+
+```
+bin/bootstrap-new-heroku-app.sh recipe-box-8l-staging staging staging
+bin/bootstrap-new-heroku-app.sh recipe-box-8l prod prod
+```
+
+Then migrate the database
+
+```
+bin/migrate-db.sh recipe-box-8l-staging
+bin/migrate-db.sh recipe-box-8l
+```
